@@ -49,17 +49,14 @@ console.log("Proje açıldı!");
 
 /* Kodlar Buradan aşağıya */
 
-const anchor = document.getElementsByTagName("a");
-
+const anchor = document.querySelectorAll("header nav a");
 for (let i = 0; i < anchor.length; i++) {
   anchor[i].textContent = siteContent.nav[`nav-item-${i + 1}`];
   anchor[i].classList.add("italic");
-  if (i === 6) {
-    anchor[i].textContent = siteContent.footer.copyright;
-    anchor[i].classList.remove("italic");
-    anchor[i].classList.add("bold");
-  }
 }
+
+document.querySelector("footer a").textContent = siteContent.footer.copyright;
+document.querySelector("footer a").classList.add("bold");
 
 let i = 0;
 const fotolar = document.getElementsByTagName("img");
@@ -68,12 +65,12 @@ for (let key in siteContent.images) {
   i++;
 }
 
-document.getElementsByTagName("h1")[0].textContent = siteContent.cta.h1;
-document.getElementsByTagName("button")[0].textContent = siteContent.cta.button;
+document.querySelector("h1").textContent = siteContent.cta.h1;
+document.querySelector("button").textContent = siteContent.cta.button;
 
-const smallHeading = document.getElementsByTagName("h4");
+const smallHeading = document.querySelectorAll("div div h4");
+const paragraph = document.querySelectorAll("div div p");
 
-const paragraph = document.getElementsByTagName("p");
 i = 0;
 let c = 0;
 for (let key in siteContent["ana-içerik"]) {
@@ -87,12 +84,17 @@ for (let key in siteContent["ana-içerik"]) {
   }
 }
 
+const smallHeadingContact = document.querySelectorAll(".contact h4");
+const paragraphContact = document.querySelectorAll(".contact p");
+
+let x = 0;
+let y = 0;
 for (let key in siteContent.iletisim) {
   if (key.includes("h4")) {
-    smallHeading[i].textContent = siteContent.iletisim[key];
-    i++;
+    smallHeadingContact[x].textContent = siteContent.iletisim[key];
+    x++;
   } else {
-    paragraph[c].textContent = siteContent.iletisim[key];
-    c++;
+    paragraphContact[y].textContent = siteContent.iletisim[key];
+    y++;
   }
 }
